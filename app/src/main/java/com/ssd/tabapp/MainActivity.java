@@ -2,6 +2,7 @@ package com.ssd.tabapp;
 
 import android.content.res.Configuration;
 import android.support.design.widget.TabLayout;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.view.Menu;
 public class MainActivity extends AppCompatActivity {
 
     private ActionBarDrawerToggle mDrawerToggle;
+    private DrawerLayout mDrawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,8 +22,13 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar)findViewById(R.id.appbar);
         setSupportActionBar(toolbar);
 
+        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawerLayout);
+        mDrawerToggle = new ActionBarDrawerToggle(MainActivity.this, mDrawerLayout, R.string.opened, R.string.closed);
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         setupTabs();
     }
@@ -58,15 +65,15 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
- /*   @Override
+    @Override
     public void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        drawerToggle.syncState();
+        mDrawerToggle.syncState();
     }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        drawerToggle.onConfigurationChanged(newConfig);
-    }*/
+        mDrawerToggle.onConfigurationChanged(newConfig);
+    }
 }

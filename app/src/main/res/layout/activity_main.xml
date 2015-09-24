@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/appbar"
-        layout="@layout/tool_appbar"/>
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
 
-    <include
-        android:id="@+id/tabLayout"
-        layout="@layout/tab_layout"
-        android:layout_height="72dp"
-        android:layout_width="match_parent"/>
+        <include
+            android:id="@+id/appbar"
+            layout="@layout/tool_appbar"/>
 
-</LinearLayout>
+        <include
+            android:id="@+id/tabLayout"
+            layout="@layout/tab_layout"
+            android:layout_height="72dp"
+            android:layout_width="match_parent"/>
+
+    </LinearLayout>
+
+</android.support.v4.widget.DrawerLayout>
+
