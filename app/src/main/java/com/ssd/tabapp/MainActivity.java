@@ -22,9 +22,15 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tabLayout);
 
         TabLayout.Tab findTab = tabLayout.newTab();
-        findTab.setCustomView(R.layout.tab_search);
+        findTab.setCustomView(R.layout.tab_recents);
         tabLayout.addTab(findTab);
 
+        tabLayout.addTab(tabLayout.newTab().setCustomView(R.layout.tab_favourites));
+        tabLayout.addTab(tabLayout.newTab().setCustomView(R.layout.tab_nearby));
+        tabLayout.addTab(tabLayout.newTab().setCustomView(R.layout.tab_music));
+        tabLayout.addTab(tabLayout.newTab().setCustomView(R.layout.tab_messages));
+
+/*
         tabLayout.addTab(tabLayout.newTab().setText(R.string.movies));
         tabLayout.addTab(tabLayout.newTab().setText("Music"));
         tabLayout.addTab(tabLayout.newTab().setText("Library"));
@@ -35,5 +41,6 @@ public class MainActivity extends AppCompatActivity {
         searchTab.setIcon(R.drawable.ic_action_ic_search_white_24dp);
         searchTab.setText("Find");
         tabLayout.addTab(searchTab);
+*/
     }
 }

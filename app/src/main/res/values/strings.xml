@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">TabApp</string>
-    <string name="movies">Movies</string>
+    <string name="nearby">NEARBY</string>
+    <string name="music">MUSIC</string>
+    <string name="recents">RECENTS</string>
+    <string name="favourites">FAVOURITES</string>
+    <string name="messages">MESSAGES</string>
 </resources>
