@@ -12,51 +12,40 @@ import android.view.Menu;
 public class MainActivity extends AppCompatActivity {
 
     private ActionBarDrawerToggle mDrawerToggle;
-    private DrawerLayout mDrawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar)findViewById(R.id.appbar);
-        setSupportActionBar(toolbar);
-
-        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawerLayout);
-        mDrawerToggle = new ActionBarDrawerToggle(MainActivity.this, mDrawerLayout, R.string.opened, R.string.closed);
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
-
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
+        setupAppBar();
         setupTabs();
+        setupDrawerLayout();
+    }
+
+    private void setupDrawerLayout() {
+        DrawerLayout drawerLayout = (DrawerLayout)findViewById(R.id.drawerLayout);
+        mDrawerToggle = new ActionBarDrawerToggle(MainActivity.this, drawerLayout, R.string.opened, R.string.closed);
+        drawerLayout.setDrawerListener(mDrawerToggle);
+
+         /* The reason for the warning here - because we set the NoActionBar in our style.
+            you can just ignore this warning. */
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void setupTabs() {
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tabLayout);
 
-        TabLayout.Tab findTab = tabLayout.newTab();
-        findTab.setCustomView(R.layout.tab_recents);
-        tabLayout.addTab(findTab);
-
+        tabLayout.addTab(tabLayout.newTab().setCustomView(R.layout.tab_recents));
         tabLayout.addTab(tabLayout.newTab().setCustomView(R.layout.tab_favourites));
         tabLayout.addTab(tabLayout.newTab().setCustomView(R.layout.tab_nearby));
         tabLayout.addTab(tabLayout.newTab().setCustomView(R.layout.tab_music));
         tabLayout.addTab(tabLayout.newTab().setCustomView(R.layout.tab_messages));
+    }
 
-/*
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.movies));
-        tabLayout.addTab(tabLayout.newTab().setText("Music"));
-        tabLayout.addTab(tabLayout.newTab().setText("Library"));
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_action_ic_search_white_24dp));
-        tabLayout.addTab(tabLayout.newTab().setText("Favourites"));
-        TabLayout.Tab searchTab = tabLayout.newTab();
-
-        searchTab.setIcon(R.drawable.ic_action_ic_search_white_24dp);
-        searchTab.setText("Find");
-        tabLayout.addTab(searchTab);
-*/
+    private void setupAppBar() {
+        Toolbar toolbar = (Toolbar)findViewById(R.id.appbar);
+        setSupportActionBar(toolbar);
     }
 
     @Override
@@ -68,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
+
+        /* This little thing will display our actual hamburger icon*/
         mDrawerToggle.syncState();
     }
 
@@ -77,3 +68,6 @@ public class MainActivity extends AppCompatActivity {
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 }
+
+
+

@@ -6,7 +6,8 @@
     <string name="favourites">FAVOURITES</string>
     <string name="messages">MESSAGES</string>
     <string name="settings">Settings</string>
-    <string name="search">Search</string>
     <string name="opened">opened</string>
     <string name="closed">closed</string>
+    <string name="search">Search</string>
 </resources>
+
